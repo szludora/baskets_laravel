@@ -1,14 +1,16 @@
-We made base laravel project with 4 table (user, basket, product, product_type), basket has composite key (user_id + item_id).
-We wrote the model with function called: setKeysForSaveQuery, gave one query type parameter, the query return the composite key's value(s).
-In the migration file we set these 2 key as the composite key.
-To make BasketFactory work well, we wrote a specific query into that, and query to BasketController too.
-Finally we test it with thunder client and see the miracle, it's working fine.
+# Basket Laravel project
+
+⋅⋅*We made base laravel project with 4 table (user, basket, product, product_type), basket has composite key (user_id + item_id).
+⋅⋅*We wrote the model with function called: setKeysForSaveQuery, gave one query type parameter, the query return the composite key's value(s).
+⋅⋅*In the migration file we set these 2 key as the composite key.
+⋅⋅*To make BasketFactory work well, we wrote a specific query into that, and query to BasketController too.
+⋅⋅*Finally we test it with thunder client and see the miracle, it's working fine.
 
 
 ___________________________________________________________________________
-The newest learned:
+##The newest learned:
 ___________________________________________________________________________
-Basket (Model):
+###Basket (Model):
 
         ```protected function setKeysForSaveQuery($query)
                 $query
@@ -16,13 +18,13 @@ Basket (Model):
                 ->where('item_id', '=', $this->getAttribute('item_id'));
                 return $query;```
 ___________________________________________________________________________
-Basket Migration:
+###Basket Migration:
 
         ```$table->primary(['user_id', 'item_id']);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('item_id')->references('item_id')->on('products');```
 ___________________________________________________________________________
-BasketFactory:
+###BasketFactory:
 
         ```$repeats = 10;
         do {
@@ -38,7 +40,7 @@ BasketFactory:
             'item_id' => $item_id,
         ];```
 ___________________________________________________________________________
-BasketController:
+###BasketController:
 
         ```public function show($user_id, $item_id)
         {
