@@ -26,6 +26,7 @@ Basket Migration:
             $table->foreignId('item_id')->references('item_id')->on('products');
 ___________________________________________________________________________
 BasketFactory:
+
 {
         $repeats = 10;
         do {
@@ -45,7 +46,7 @@ BasketFactory:
 ___________________________________________________________________________
     BasketController:
     
-     public function show($user_id, $item_id)
+    public function show($user_id, $item_id)
     {
         $basket = Basket::where('user_id', $user_id)
             ->where('item_id', $item_id)
@@ -54,4 +55,4 @@ ___________________________________________________________________________
         // return $basket[0];
         return $basket;
     }
-    ___________________________________________________________________________
+___________________________________________________________________________
