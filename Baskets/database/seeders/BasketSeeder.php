@@ -12,6 +12,6 @@ class BasketSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        \App\Models\Basket::factory(10)->create();
     }
 }

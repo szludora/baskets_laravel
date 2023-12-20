@@ -23,7 +23,6 @@ class UserController extends Controller
         $user->name = $request->name; 
         $user->email = $request->email; 
         $user->password = $request->password; 
-        $user->sex = $request->sex; 
         $user->balance = $request->balance; 
         $user->save(); 
     } 
@@ -33,7 +32,6 @@ class UserController extends Controller
         $user->name = $request->name; 
         $user->email = $request->email; 
         $user->password = $request->password; 
-        $user->sex = $request->sex; 
         $user->balance = $request->balance; 
         $user->save(); 
     } 
