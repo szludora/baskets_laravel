@@ -12,21 +12,25 @@ ___________________________________________________________________________
 ___________________________________________________________________________
 ### Basket (Model):
 
-        ```protected function setKeysForSaveQuery($query)
+        ```
+        protected function setKeysForSaveQuery($query)
                 $query
                 ->where('user_id', '=', $this->getAttribute('user_id'))
                 ->where('item_id', '=', $this->getAttribute('item_id'));
-                return $query;```
+                return $query;
+        ```
 ___________________________________________________________________________
 ### Basket Migration:
 
-        ```$table->primary(['user_id', 'item_id']);
+        ```
+        $table->primary(['user_id', 'item_id']);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('item_id')->references('item_id')->on('products');```
 ___________________________________________________________________________
 ### BasketFactory:
 
-        ```$repeats = 10;
+        ```
+        $repeats = 10;
         do {
             $user_id = User::all()->random()->id;
             $item_id = Product::all()->random()->item_id;
@@ -38,15 +42,18 @@ ___________________________________________________________________________
         return [
             'user_id' => $user_id,
             'item_id' => $item_id,
-        ];```
+        ];
+        ```
 ___________________________________________________________________________
 ### BasketController:
 
-        ```public function show($user_id, $item_id)
+        ```
+        public function show($user_id, $item_id)
         {
         $basket = Basket::where('user_id', $user_id)
             ->where('item_id', $item_id)
             ->first();
         return $basket;
-        }```
+        }
+        ```
 ___________________________________________________________________________
