@@ -9,7 +9,7 @@ ___________________________________________________________________________
 The newest learned:
 ___________________________________________________________________________
 Basket (Model):
-
+{
 protected function setKeysForSaveQuery($query)
     {
         $query
@@ -18,12 +18,14 @@ protected function setKeysForSaveQuery($query)
         ->where('item_id', '=', $this->getAttribute('item_id'));
         return $query;
     }
+}
 ___________________________________________________________________________
 Basket Migration:
-
+{
     $table->primary(['user_id', 'item_id']);
             $table->foreignId('user_id')->references('id')->on('users');
             $table->foreignId('item_id')->references('item_id')->on('products');
+}
 ___________________________________________________________________________
 BasketFactory:
 
@@ -42,10 +44,10 @@ BasketFactory:
             'user_id' => $user_id,
             'item_id' => $item_id,
         ];
-    }
+}
 ___________________________________________________________________________
     BasketController:
-    
+{
     public function show($user_id, $item_id)
     {
         $basket = Basket::where('user_id', $user_id)
@@ -55,4 +57,5 @@ ___________________________________________________________________________
         // return $basket[0];
         return $basket;
     }
+}
 ___________________________________________________________________________
