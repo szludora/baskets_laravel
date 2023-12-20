@@ -31,19 +31,22 @@ class BasketController extends Controller
         $basket->save();
     }
 
+    // request - query
+    // $user_id, $item_id --> paraméter
     public function update(Request $request, $user_id, $item_id)
     {
         // összetett kulcsnál a find helyett a show-t használjuk
         // $basket = Basket::find($id);
-        $basket = Basket::show($user_id, $item_id);
+        $basket = $this->show($user_id, $item_id);
         $basket->user_id = $request->user_id;
         $basket->item_id = $request->item_id;
         $basket->save();
     }
 
+
     public function destroy($user_id, $item_id)
     {
-        basket::show($user_id, $item_id)->delete();
+        $this->show($user_id, $item_id)->delete();
         // basket::find($id)->delete();
     }
 }
