@@ -1,6 +1,6 @@
 # Basket Laravel project
 
-+ We made base laravel project with 4 table (user, basket, product, product_type), basket has composite key (user_id + item_id).
++ We made basic laravel project with 4 table (user, basket, product, product_type), basket has composite key (user_id + item_id).
 + We wrote the model with function called: setKeysForSaveQuery, gave one query type parameter, the query return the composite key's value(s).
 + In the migration file we set these 2 key as the composite key.
 + To make BasketFactory work well, we wrote a specific query into that, and query to BasketController too.
